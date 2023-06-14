@@ -28,11 +28,11 @@ The application has the following core functionalities:
 
 ## Structure
 
-The `StorageJson` class handles the persistence of movie data. It loads movie data from a JSON file when the application starts and saves the movie data back to the JSON file when the application ends.
+The `IStorage` interface provides the contract for different storage implementations. The `StorageJson` class implements this interface and handles the persistence of movie data in a JSON file. It loads movie data from a JSON file when the application starts and saves the movie data back to the JSON file when the application ends. Similarly, the `StorageCsv` class implements the `IStorage` interface and allows handling the persistence of movie data in a CSV file.
 
-The `MovieApp` class uses the `StorageJson` class methods to manipulate the movie data based on user's menu choices. The menu is implemented in a loop within the `run` method of the `MovieApp` class. The menu prompts the user for actions until they choose to exit the application.
+The `MovieApp` class uses the storage class methods (`StorageJson` or `StorageCsv`) to manipulate the movie data based on user's menu choices. The menu is implemented in a loop within the `run` method of the `MovieApp` class. The menu prompts the user for actions until they choose to exit the application.
 
-The `main` function is the application's entry point. It creates a `StorageJson` object and a `MovieApp` object, and then runs the application.
+The `main` function is the application's entry point. It creates a storage object (`StorageJson` or `StorageCsv`) and a `MovieApp` object, and then runs the application.
 
 ## Usage
 
@@ -45,6 +45,8 @@ The following libraries are required:
 
 - `requests`
 - `json`
+- `csv`
 - `random`
 - `matplotlib`
 - `rapidfuzz`
+- `abc`
